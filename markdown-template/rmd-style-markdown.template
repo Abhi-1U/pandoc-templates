@@ -1,0 +1,50 @@
+---
+$if(title)$
+title:$title$
+$endif$
+$if(abstract)$
+abstract: >
+  $abstract$
+$endif$
+$if(author)$
+author:
+  $for(address)$  
+  - name: $address[\]$
+    affiliation: $address[\]$
+    address:
+    - $address[\]$
+      $address[\]$
+    $for(url)$
+    url: $url$
+    $endfor$
+$if(orcid)$
+    orcid: $orcid$
+$endif$
+$if(email)$
+    email: $email$
+$endif$
+  $endfor$
+$endif$
+output: 
+  rjtools::rjournal_web_article:
+    self_contained: yes
+    toc: no
+$if(bibliography)$
+bibliography: $bibliography$
+$endif$
+---
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+$if(toc)$
+$table-of-contents$
+
+$endif$
+$body$
+$for(include-after)$
+
+$include-after$
+$endfor$
+
